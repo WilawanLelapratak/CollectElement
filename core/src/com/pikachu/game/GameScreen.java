@@ -20,15 +20,17 @@ public class GameScreen extends ScreenAdapter {
 	}
 	
 	@Override
-    public void render(float delta) {
+    public void render (float delta) {
         SpriteBatch batch = piKaChuGame.batch;
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        x += 5;
+        update(delta);
         batch.begin();
         batch.draw(piKaChuImg, x, y);
         batch.end();
-        
     }
 
+	public void update (float delta) {
+		x += 5;
+	}
 }
