@@ -30,7 +30,6 @@ public class Element {
 		float diameter = thunderImg.getHeight();
 		if (position.y < -diameter) {
 			outOfFrame = true;
-			System.out.println("Pika!");
 		}
 	}
 }
