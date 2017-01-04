@@ -16,7 +16,6 @@ public class WorldRenderer {
 		this.world = world;
 		this.world.worldRenderer = this;
 		bgImg = new Texture("background.png");
-//		piKaChuImg = new Texture("pikachu.png");
 		
 	}
 	
@@ -24,7 +23,6 @@ public class WorldRenderer {
 		batch.begin();
         batch.draw(bgImg, 0, 0);
         Vector2 pos = world.pikachu.getPosition();
-//        batch.draw(piKaChuImg, pos.x, pos.y);
         drawElement();
         drawPokemon();
         batch.end();

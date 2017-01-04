@@ -24,7 +24,6 @@ public class Element {
 	public void update() {
 		position.y -= speed;
 		checkframe();
-		hitting();
 	}
 	
 	public void checkframe() {
@@ -33,10 +32,5 @@ public class Element {
 			outOfFrame = true;
 			System.out.println("Pika!");
 		}
-	}
-	
-	public void hitting() {
-		float centerx = position.x + thunderImg.getWidth() / 2;
-		float centery = position.y + thunderImg.getHeight() / 2;
 	}
 }

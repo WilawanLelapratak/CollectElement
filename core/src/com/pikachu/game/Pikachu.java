@@ -27,5 +27,15 @@ public class Pikachu {
         if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
         	position.x += 5;
         }
+        checkFrame();
+	}
+	
+	public void checkFrame() {
+		if (position.x >= PiKaChuGame.WIDTH - piKaChuImg.getWidth()) {
+			position.x = PiKaChuGame.WIDTH - piKaChuImg.getWidth();
+		}
+		if (position.x <= 0) {
+			position.x = 0;
+		}
 	}
 }

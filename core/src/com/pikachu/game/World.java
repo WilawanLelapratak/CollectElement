@@ -34,6 +34,18 @@ public class World {
         	if (elements[i].outOfFrame) {
 				elements[i] = new Element();
 			}
+        	if (elements[i].position.x > pikachu.position.x - elements[i].thunderImg.getWidth()) {
+        		elements[i] = new Element();
+        	}
+        	if (elements[i].position.x < pikachu.position.x + pikachu.piKaChuImg.getWidth()) {
+        		elements[i] = new Element();
+        	}
+//        	if (elements[i].position.y <  pikachu.position.y + pikachu.piKaChuImg.getHeight()) {
+//        		elements[i] = new Element();
+//        	}
+//        	if (elements[i].position.y > pikachu.position.y - elements[i].thunderImg.getHeight()) {
+//        		elements[i] = new Element();
+//        	}
         }
 	}
 }
