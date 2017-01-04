@@ -11,12 +11,14 @@ public class Pikachu {
 	Random rand = new Random();
 	public Vector2 position;
 	public Texture piKaChuImg;
+	private World world;
 	public int pokemonType = 2;
 	private int time = 0;
 	public static final int DIRECTION_RIGHT = 2;
 	public static final int DIRECTION_LEFT = 4;
 	
-	public Pikachu(int x, int y) {
+	public Pikachu(int x, int y, World world) {
+		this.world = world;
 		genImg();
 		position = new Vector2(x, y);
 	}
@@ -52,6 +54,7 @@ public class Pikachu {
 		time++;
 		if(time%1000 == 0 && time != 0) {
 			genPokemonType();
+			world.changingSound.play(1000000);
 			genImg();
 		}
 		

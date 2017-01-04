@@ -2,12 +2,15 @@ package com.pikachu.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.audio.Sound;
 
 public class World {
 	public Pikachu pikachu;
 	private PiKaChuGame piKaChuGame;
 	public WorldRenderer worldRenderer;
 	public Cycle cycle;
+	public Sound themeSound = Gdx.audio.newSound(Gdx.files.internal("battlesound.mp3"));
+	public Sound changingSound = Gdx.audio.newSound(Gdx.files.internal("change.mp3"));
 	public Element [] elements;
 	public int score;
 	public static final int MAXHP = 1000;
@@ -30,6 +33,7 @@ public class World {
         	cycle.genImg(pikachu.pokemonType);
 		}
 		else {
+			themeSound.stop();
 			restart();
 		}
 	}
@@ -43,12 +47,13 @@ public class World {
 	public void gameset() {
 		hp = MAXHP;
 		score = 0;
+		themeSound.loop(1);
 		elements = new Element[4];
 		for (int i = 0; i < elements.length; i++) {
 			elements[i] = new Element();
 		}
 		
-		pikachu = new Pikachu(((piKaChuGame.WIDTH/2) - 35), 100);
+		pikachu = new Pikachu(((piKaChuGame.WIDTH/2) - 35), 100, this);
 		cycle = new Cycle(pikachu.pokemonType);
 	}
 	
