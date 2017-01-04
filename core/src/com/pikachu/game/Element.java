@@ -8,15 +8,15 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Element {
 	SpriteBatch batch;
+	Random rand = new Random();
 	public Vector2 position;
 	public Texture thunderImg;
 	public boolean outOfFrame = false;
-	private static final int SPEED = 5;
+	private int SPEED = rand.nextInt(7) + 2;
 	
 	public Element () {
 		thunderImg = new Texture("flash.png");
 		float diameter = thunderImg.getWidth();
-		Random rand = new Random();
 		float x = rand.nextInt(PiKaChuGame.WIDTH - (int)diameter) + (diameter/2);
 		position = new Vector2(x, PiKaChuGame.HEIGHT);
 	}
