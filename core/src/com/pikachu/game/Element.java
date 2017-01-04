@@ -12,7 +12,7 @@ public class Element {
 	public Vector2 position;
 	public Texture thunderImg;
 	public boolean outOfFrame = false;
-	private int SPEED = rand.nextInt(7) + 2;
+	private int speed = rand.nextInt(5) + 2;
 	
 	public Element () {
 		thunderImg = new Texture("flash.png");
@@ -22,8 +22,9 @@ public class Element {
 	}
 	
 	public void update() {
-		position.y -= SPEED;
+		position.y -= speed;
 		checkframe();
+		hitting();
 	}
 	
 	public void checkframe() {
@@ -32,5 +33,10 @@ public class Element {
 			outOfFrame = true;
 			System.out.println("Pika!");
 		}
+	}
+	
+	public void hitting() {
+		float centerx = position.x + thunderImg.getWidth() / 2;
+		float centery = position.y + thunderImg.getHeight() / 2;
 	}
 }

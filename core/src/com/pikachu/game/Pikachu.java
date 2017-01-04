@@ -2,14 +2,17 @@ package com.pikachu.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 
 public class Pikachu {
-	private Vector2 position;
+	public Vector2 position;
+	public Texture piKaChuImg;
 	public static final int DIRECTION_RIGHT = 2;
 	public static final int DIRECTION_LEFT = 4;
 	
 	public Pikachu(int x, int y) {
+		piKaChuImg = new Texture("pikachu.png");
 		position = new Vector2(x, y);
 	}
 

@@ -6,7 +6,6 @@ import com.badlogic.gdx.math.Vector2;
 
 public class WorldRenderer {
 	private PiKaChuGame piKaChuGame;
-	private Texture piKaChuImg;
 	private Texture bgImg;
 	private World world;
 	SpriteBatch batch;
@@ -14,12 +13,10 @@ public class WorldRenderer {
 	public WorldRenderer(PiKaChuGame piKaChuGame, World world) {
 		this.piKaChuGame = piKaChuGame;
 		batch = piKaChuGame.batch;
-		
 		this.world = world;
 		this.world.worldRenderer = this;
-//		thunderImg = new Texture("flash.png");
 		bgImg = new Texture("background.png");
-		piKaChuImg = new Texture("pikachu.png");
+//		piKaChuImg = new Texture("pikachu.png");
 		
 	}
 	
@@ -27,8 +24,9 @@ public class WorldRenderer {
 		batch.begin();
         batch.draw(bgImg, 0, 0);
         Vector2 pos = world.pikachu.getPosition();
-        batch.draw(piKaChuImg, pos.x, pos.y);
+//        batch.draw(piKaChuImg, pos.x, pos.y);
         drawElement();
+        drawPokemon();
         batch.end();
 	}
 	
@@ -37,5 +35,8 @@ public class WorldRenderer {
 			batch.draw(world.elements[i].thunderImg, world.elements[i].position.x, world.elements[i].position.y);
 		}
 	}
-
+	
+	public void drawPokemon() {
+		batch.draw(world.pikachu.piKaChuImg, world.pikachu.position.x, world.pikachu.position.y);
+	}
 }
