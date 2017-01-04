@@ -16,9 +16,11 @@ public class WorldRenderer {
 		batch = piKaChuGame.batch;
 		
 		this.world = world;
-		
+		this.world.worldRenderer = this;
+//		thunderImg = new Texture("flash.png");
 		bgImg = new Texture("background.png");
 		piKaChuImg = new Texture("pikachu.png");
+		
 	}
 	
 	public void render (float delta) {
@@ -26,7 +28,12 @@ public class WorldRenderer {
         batch.draw(bgImg, 0, 0);
         Vector2 pos = world.pikachu.getPosition();
         batch.draw(piKaChuImg, pos.x, pos.y);
+        drawElement();
         batch.end();
+	}
+	
+	public void drawElement() {
+		batch.draw(world.element.thunderImg, world.element.position.x, world.element.position.y);
 	}
 
 }

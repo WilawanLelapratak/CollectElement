@@ -8,6 +8,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class PiKaChuGame extends Game{
+	public static final int HEIGHT = 540;
+	public static final int WIDTH = 960;
 	public SpriteBatch batch;
 
 	

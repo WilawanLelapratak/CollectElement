@@ -7,8 +7,8 @@ import com.pikachu.game.PiKaChuGame;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		config.width = 960;
-		config.height = 540;
+		config.width = PiKaChuGame.WIDTH;
+		config.height = PiKaChuGame.HEIGHT;
 		new LwjglApplication(new PiKaChuGame(), config);
 	}
 }

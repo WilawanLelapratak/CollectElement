@@ -1,5 +1,7 @@
 package com.pikachu.game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.math.Vector2;
 
 public class Pikachu {
@@ -14,14 +16,13 @@ public class Pikachu {
 	public Vector2 getPosition() {
 		return position;
 	}
-	
-	public void move (int dir) {
-		switch(dir) {
-		case DIRECTION_RIGHT :
-			position.x += 5;
-			break;
-		case DIRECTION_LEFT :
+
+	public void update() {
+		if(Gdx.input.isKeyPressed(Keys.LEFT)) {
 			position.x -= 5;
-		}
+        }
+        if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
+        	position.x += 5;
+        }
 	}
 }
