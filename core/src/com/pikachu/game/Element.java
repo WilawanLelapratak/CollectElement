@@ -10,6 +10,7 @@ public class Element {
 	SpriteBatch batch;
 	public Vector2 position;
 	public Texture thunderImg;
+	public boolean outOfFrame = false;
 	private static final int SPEED = 5;
 	
 	public Element () {
@@ -20,11 +21,16 @@ public class Element {
 		position = new Vector2(x, PiKaChuGame.HEIGHT);
 	}
 	
-//	public void draw() {
-//		batch.draw(thunderImg, position.x, position.y);
-//	}
-	
 	public void update() {
 		position.y -= SPEED;
+		checkframe();
+	}
+	
+	public void checkframe() {
+		float diameter = thunderImg.getHeight();
+		if (position.y < -diameter) {
+			outOfFrame = true;
+			System.out.println("Pika!");
+		}
 	}
 }

@@ -19,14 +19,21 @@ public class World {
 		pikachu = new Pikachu(100, 100);
 	}
 	
-	Pikachu getPikachu() {
+	Pikachu getPikachu () {
 		return pikachu;
 	}
 	
 	public void update (float delta) {
         pikachu.update();
-        for (int i = 0; i < elements.length; i++) {
+        updateElements();
+	}
+	
+	public void updateElements () {
+		for (int i = 0; i < elements.length; i++) {
         	elements[i].update();
+        	if (elements[i].outOfFrame) {
+				elements[i] = new Element();
+			}
         }
 	}
 }
