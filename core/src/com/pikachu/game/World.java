@@ -35,13 +35,13 @@ public class World {
         	if (elements[i].outOfFrame) {
 				elements[i] = new Element();
 			}
-        	if (elements[i].position.x > pikachu.position.x - ((2*elements[i].thunderImg.getWidth())/3)
+        	if (elements[i].position.x > pikachu.position.x - ((2*elements[i].elementImg.getWidth())/3)
         			&& elements[i].position.x < pikachu.position.x + ((2*pikachu.piKaChuImg.getWidth())/3)
         			&& elements[i].position.y <  pikachu.position.y + ((2*pikachu.piKaChuImg.getHeight())/3)
-        			&& elements[i].position.y > pikachu.position.y - ((2*elements[i].thunderImg.getHeight())/3)) {
+        			&& elements[i].position.y > pikachu.position.y - ((2*elements[i].elementImg.getHeight())/3)) {
         		elements[i] = new Element();
         		score++;
-        		System.out.println(score);
+//        		System.out.println(score);
         	}
         }
 	}
