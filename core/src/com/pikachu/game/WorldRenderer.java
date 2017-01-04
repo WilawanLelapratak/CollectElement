@@ -10,6 +10,7 @@ public class WorldRenderer {
 	private PiKaChuGame piKaChuGame;
 	private Texture bgImg;
 	private Texture hpImg;
+	private Texture hpGateImg;
 	private World world;
 	private SpriteBatch batch;
 	private BitmapFont font = new BitmapFont(Gdx.files.internal("endDetailArcade.fnt"));
@@ -21,6 +22,7 @@ public class WorldRenderer {
 		this.world.worldRenderer = this;
 		bgImg = new Texture("background.png");
 		hpImg = new Texture("hp.png");
+		hpGateImg = new Texture("hpgate.png");
 	}
 	
 	public void render (float delta) {
@@ -30,6 +32,7 @@ public class WorldRenderer {
         Vector2 pos = world.pikachu.getPosition();
         drawElement();
         drawPokemon();
+        batch.draw(hpGateImg, 125, 506, ((hpGateImg.getWidth()*world.hp)/World.MAXHP), hpGateImg.getHeight());
         batch.draw(hpImg, 10, 500);
         batch.end();
 	}

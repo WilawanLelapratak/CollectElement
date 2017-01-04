@@ -9,7 +9,8 @@ public class World {
 	public WorldRenderer worldRenderer;
 	public Element [] elements;
 	public int score = 0;
-	public int hp = 100;
+	public static final int MAXHP = 100;
+	public int hp = MAXHP;
 	
 	World (PiKaChuGame piKaChuGame) {
 		this.piKaChuGame = piKaChuGame;
@@ -48,6 +49,7 @@ public class World {
         		}
         		else if ((elements[i].elementType - pikachu.pokemonType) == -1) {
         			score--;
+        			hp -= MAXHP/5;
         		}
         		elements[i] = new Element();
         	}
