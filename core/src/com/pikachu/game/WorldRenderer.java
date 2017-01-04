@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 public class WorldRenderer {
 	private PiKaChuGame piKaChuGame;
 	private Texture bgImg;
+	private Texture hpImg;
 	private World world;
 	private SpriteBatch batch;
 	private BitmapFont font = new BitmapFont(Gdx.files.internal("endDetailArcade.fnt"));
@@ -19,7 +20,7 @@ public class WorldRenderer {
 		this.world = world;
 		this.world.worldRenderer = this;
 		bgImg = new Texture("background.png");
-		
+		hpImg = new Texture("hp.png");
 	}
 	
 	public void render (float delta) {
@@ -29,6 +30,7 @@ public class WorldRenderer {
         Vector2 pos = world.pikachu.getPosition();
         drawElement();
         drawPokemon();
+        batch.draw(hpImg, 10, 500);
         batch.end();
 	}
 	

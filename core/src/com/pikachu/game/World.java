@@ -9,6 +9,7 @@ public class World {
 	public WorldRenderer worldRenderer;
 	public Element [] elements;
 	public int score = 0;
+	public int hp = 100;
 	
 	World (PiKaChuGame piKaChuGame) {
 		this.piKaChuGame = piKaChuGame;
@@ -41,15 +42,12 @@ public class World {
         			&& elements[i].position.y > pikachu.position.y - ((2*elements[i].elementImg.getHeight())/3)) {
         		if (elements[i].elementType == pikachu.pokemonType) {
         			score++;
-        			System.out.println(elements[i].elementType);
         		}
         		else if ((elements[i].elementType - pikachu.pokemonType) == 1) {
         			score += 2;
-        			System.out.println(elements[i].elementType);
         		}
         		else if ((elements[i].elementType - pikachu.pokemonType) == -1) {
         			score--;
-        			System.out.println(elements[i].elementType);
         		}
         		elements[i] = new Element();
         	}
