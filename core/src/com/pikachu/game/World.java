@@ -7,10 +7,11 @@ public class World {
 	public Pikachu pikachu;
 	private PiKaChuGame piKaChuGame;
 	public WorldRenderer worldRenderer;
+	public Cycle cycle;
 	public Element [] elements;
 	public int score;
-	public static final int MAXHP = 100;
-	public int hp;
+	public static final int MAXHP = 1000;
+	public float hp;
 	
 	World (PiKaChuGame piKaChuGame) {
 		this.piKaChuGame = piKaChuGame;
@@ -23,8 +24,10 @@ public class World {
 	
 	public void update (float delta) {
 		if (hp > 0) {
+			hp--;
         	pikachu.update();
         	updateElements();
+        	cycle.genImg(pikachu.pokemonType);
 		}
 		else {
 			restart();
@@ -46,6 +49,7 @@ public class World {
 		}
 		
 		pikachu = new Pikachu(((piKaChuGame.WIDTH/2) - 35), 100);
+		cycle = new Cycle(pikachu.pokemonType);
 	}
 	
 	public void updateElements () {
@@ -61,11 +65,13 @@ public class World {
         		if (elements[i].elementType == pikachu.pokemonType) {
         			score++;
         		}
-        		else if ((elements[i].elementType - pikachu.pokemonType) == 1) {
-        			score += 2;
+        		else if ((elements[i].elementType - pikachu.pokemonType) == 1 || (elements[i].elementType - pikachu.pokemonType) == -3) {
+        			hp += MAXHP/4;
+        			if (hp > MAXHP) {
+        				hp = MAXHP;
+        			}
         		}
-        		else if ((elements[i].elementType - pikachu.pokemonType) == -1) {
-        			score--;
+        		else if ((elements[i].elementType - pikachu.pokemonType) == -1 || (elements[i].elementType - pikachu.pokemonType) == 3) {
         			hp -= MAXHP/5;
         		}
         		elements[i] = new Element();

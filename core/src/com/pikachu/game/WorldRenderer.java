@@ -14,6 +14,7 @@ public class WorldRenderer {
 	private World world;
 	private SpriteBatch batch;
 	private BitmapFont font = new BitmapFont(Gdx.files.internal("endDetailArcade.fnt"));
+	private BitmapFont smallFont = new BitmapFont();
 	
 	public WorldRenderer(PiKaChuGame piKaChuGame, World world) {
 		this.piKaChuGame = piKaChuGame;
@@ -33,8 +34,9 @@ public class WorldRenderer {
         if (world.hp > 0) {
         	drawElement();
         	drawPokemon();
+        	drawCycle();
         }
-        batch.draw(hpGateImg, 125, 506, ((hpGateImg.getWidth()*world.hp)/World.MAXHP), hpGateImg.getHeight());
+        batch.draw(hpGateImg, 125, 506, (hpGateImg.getWidth()*(world.hp/World.MAXHP)), hpGateImg.getHeight());
         batch.draw(hpImg, 10, 500);
         drawEndGame();
         batch.end();
@@ -48,6 +50,13 @@ public class WorldRenderer {
 	
 	public void drawPokemon() {
 		batch.draw(world.pikachu.piKaChuImg, world.pikachu.position.x, world.pikachu.position.y);
+	}
+	
+	public void drawCycle() {
+		for (int i = 0; i < world.cycle.showImgs.length; i++) {
+			batch.draw(world.cycle.showImgs[i], 750 + (75*i), 50 , ((3*world.cycle.showImgs[i].getWidth())/4),((3*world.cycle.showImgs[i].getHeight())/4));
+		}
+		smallFont.draw(batch, "+Score          +HP           -HP", 743, 35);
 	}
 	
 	public void drawEndGame() {
