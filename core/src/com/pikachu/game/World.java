@@ -8,7 +8,7 @@ public class World {
 	private PiKaChuGame piKaChuGame;
 	public WorldRenderer worldRenderer;
 	public Element [] elements;
-	private int score = 0;
+	public int score = 0;
 	
 	World (PiKaChuGame piKaChuGame) {
 		this.piKaChuGame = piKaChuGame;

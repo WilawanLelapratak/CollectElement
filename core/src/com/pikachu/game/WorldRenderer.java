@@ -1,6 +1,8 @@
 package com.pikachu.game;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
@@ -8,7 +10,8 @@ public class WorldRenderer {
 	private PiKaChuGame piKaChuGame;
 	private Texture bgImg;
 	private World world;
-	SpriteBatch batch;
+	private SpriteBatch batch;
+	private BitmapFont font = new BitmapFont(Gdx.files.internal("endDetailArcade.fnt"));
 	
 	public WorldRenderer(PiKaChuGame piKaChuGame, World world) {
 		this.piKaChuGame = piKaChuGame;
@@ -22,6 +25,7 @@ public class WorldRenderer {
 	public void render (float delta) {
 		batch.begin();
         batch.draw(bgImg, 0, 0);
+        font.draw(batch,  "SCORE : " + world.score, 10, 50);
         Vector2 pos = world.pikachu.getPosition();
         drawElement();
         drawPokemon();
