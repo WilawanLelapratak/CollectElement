@@ -8,18 +8,13 @@ public class World {
 	private PiKaChuGame piKaChuGame;
 	public WorldRenderer worldRenderer;
 	public Element [] elements;
-	public int score = 0;
+	public int score;
 	public static final int MAXHP = 100;
-	public int hp = MAXHP;
+	public int hp;
 	
 	World (PiKaChuGame piKaChuGame) {
 		this.piKaChuGame = piKaChuGame;
-		elements = new Element[4];
-		for (int i = 0; i < elements.length; i++) {
-			elements[i] = new Element();
-		}
-		
-		pikachu = new Pikachu(100, 100);
+		gameset();
 	}
 	
 	Pikachu getPikachu () {
@@ -27,8 +22,30 @@ public class World {
 	}
 	
 	public void update (float delta) {
-        pikachu.update();
-        updateElements();
+		if (hp > 0) {
+        	pikachu.update();
+        	updateElements();
+		}
+		else {
+			restart();
+		}
+	}
+	
+	public void restart () {
+		if (Gdx.input.isKeyPressed(Keys.SPACE)) {
+			gameset();
+		}
+	}
+	
+	public void gameset() {
+		hp = MAXHP;
+		score = 0;
+		elements = new Element[4];
+		for (int i = 0; i < elements.length; i++) {
+			elements[i] = new Element();
+		}
+		
+		pikachu = new Pikachu(((piKaChuGame.WIDTH/2) - 35), 100);
 	}
 	
 	public void updateElements () {

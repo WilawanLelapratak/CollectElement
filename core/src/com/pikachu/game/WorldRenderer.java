@@ -30,10 +30,13 @@ public class WorldRenderer {
         batch.draw(bgImg, 0, 0);
         font.draw(batch,  "SCORE : " + world.score, 10, 50);
         Vector2 pos = world.pikachu.getPosition();
-        drawElement();
-        drawPokemon();
+        if (world.hp > 0) {
+        	drawElement();
+        	drawPokemon();
+        }
         batch.draw(hpGateImg, 125, 506, ((hpGateImg.getWidth()*world.hp)/World.MAXHP), hpGateImg.getHeight());
         batch.draw(hpImg, 10, 500);
+        drawEndGame();
         batch.end();
 	}
 	
@@ -45,5 +48,11 @@ public class WorldRenderer {
 	
 	public void drawPokemon() {
 		batch.draw(world.pikachu.piKaChuImg, world.pikachu.position.x, world.pikachu.position.y);
+	}
+	
+	public void drawEndGame() {
+		if (world.hp <= 0) {
+			font.draw(batch,  "       GAME OVER\n\nPress SPACE to continue", 20, (PiKaChuGame.HEIGHT/2) + 50);
+		}
 	}
 }
