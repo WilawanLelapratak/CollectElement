@@ -33,7 +33,9 @@ public class WorldRenderer {
 	}
 	
 	public void drawElement() {
-		batch.draw(world.element.thunderImg, world.element.position.x, world.element.position.y);
+		for (int i = 0; i < world.elements.length; i++) {
+			batch.draw(world.elements[i].thunderImg, world.elements[i].position.x, world.elements[i].position.y);
+		}
 	}
 
 }

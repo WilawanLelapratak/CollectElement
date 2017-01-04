@@ -7,11 +7,15 @@ public class World {
 	public Pikachu pikachu;
 	private PiKaChuGame piKaChuGame;
 	public WorldRenderer worldRenderer;
-	public Element element;
+	public Element [] elements;
 	
 	World (PiKaChuGame piKaChuGame) {
 		this.piKaChuGame = piKaChuGame;
-		element = new Element();
+		elements = new Element[4];
+		for (int i = 0; i < elements.length; i++) {
+			elements[i] = new Element();
+		}
+		
 		pikachu = new Pikachu(100, 100);
 	}
 	
@@ -21,6 +25,8 @@ public class World {
 	
 	public void update (float delta) {
         pikachu.update();
-        element.update();
+        for (int i = 0; i < elements.length; i++) {
+        	elements[i].update();
+        }
 	}
 }
