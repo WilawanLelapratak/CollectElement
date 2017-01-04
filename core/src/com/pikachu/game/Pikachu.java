@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 public class Pikachu {
 	public Vector2 position;
 	public Texture piKaChuImg;
+	public int pokemonType = 2;
 	public static final int DIRECTION_RIGHT = 2;
 	public static final int DIRECTION_LEFT = 4;
 	

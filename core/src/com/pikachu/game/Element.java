@@ -35,16 +35,18 @@ public class Element {
 	public void genImg() {
 		switch (elementType) {
 			case 0 :
-				elementImg = new Texture("flash.png");
-				break;
-			case 1 :
 				elementImg = new Texture("fire.png");
 				break;
+			case 1 :
+				elementImg = new Texture("ground.png");
+				break;
 			case 2 :
-				elementImg = new Texture("water.png");
+				elementImg = new Texture("flash.png");
 				break;
 			case 3 :
-				elementImg = new Texture("ground.png");
+				elementImg = new Texture("water.png");
+				break;
+			default :
 				break;
 		}
 	}

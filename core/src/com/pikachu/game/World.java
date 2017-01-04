@@ -39,9 +39,19 @@ public class World {
         			&& elements[i].position.x < pikachu.position.x + ((2*pikachu.piKaChuImg.getWidth())/3)
         			&& elements[i].position.y <  pikachu.position.y + ((2*pikachu.piKaChuImg.getHeight())/3)
         			&& elements[i].position.y > pikachu.position.y - ((2*elements[i].elementImg.getHeight())/3)) {
+        		if (elements[i].elementType == pikachu.pokemonType) {
+        			score++;
+        			System.out.println(elements[i].elementType);
+        		}
+        		else if ((elements[i].elementType - pikachu.pokemonType) == 1) {
+        			score += 2;
+        			System.out.println(elements[i].elementType);
+        		}
+        		else if ((elements[i].elementType - pikachu.pokemonType) == -1) {
+        			score--;
+        			System.out.println(elements[i].elementType);
+        		}
         		elements[i] = new Element();
-        		score++;
-//        		System.out.println(score);
         	}
         }
 	}
